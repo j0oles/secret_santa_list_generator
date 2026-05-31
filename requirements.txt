@@ -1,2 +1,4 @@
 # Aucune dépendance externe pour l'instant — tout est en stdlib Python
 # Ajouter ici si on intègre tiktoken, anthropic, etc.
+import pandas as pd
+import random
