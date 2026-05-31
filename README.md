@@ -1,57 +1,80 @@
-# Santa List Generator
+# Secret Santa List Generator
 
-Un petit outil pour générer et gérer des listes de cadeaux (liste du Père Noël).
+Petit projet Python pour générer un tirage de Secret Santa.
 
-## Description
+L'objectif : chaque personne tire quelqu'un à qui offrir un cadeau, sans tomber sur elle-même ni sur la personne de son couple.
 
-Ce projet permet de créer, modifier et exporter des listes de cadeaux pour des destinataires variés. Conçu pour être simple, extensible et scriptable.
+## Fonctionnement
+
+Le tirage vérifie deux règles :
+
+- une personne ne peut pas s'offrir un cadeau à elle-même ;
+- deux personnes d'un même couple ne peuvent pas se tirer entre elles.
+
+Si le tirage n'est pas valide, le script mélange à nouveau les participants jusqu'à trouver une combinaison correcte.
+
+## Structure
+
+```text
+.
+├── main.py
+├── data/
+│   └── participants.json
+├── functions/
+│   ├── create_participants.py
+│   ├── shuffle_participants.py
+│   ├── check_draw.py
+│   └── santa.py
+└── requirements.txt
+```
+
+## Utilisation prévue
+
+Pour l'instant, la logique principale est dans `functions/santa.py`.
+
+Exemple de données attendues :
+
+```python
+couples = [
+    ("Alice", "Bob"),
+    ("Charlie", "Dana"),
+]
+```
+
+Puis appel :
+
+```python
+santa_list(couples)
+```
+
+Exemple de résultat :
+
+```text
+Alice offre à Dana
+Bob offre à Charlie
+Charlie offre à Alice
+Dana offre à Bob
+```
+
+## A faire
+
+- remplir `data/participants.json` avec les participants ;
+- brancher `main.py` pour lancer le tirage facilement ;
+- améliorer l'import des fonctions ;
+- éventuellement exporter le résultat dans un fichier.
 
 ## Installation
 
-1. Cloner le dépôt :
-
-	 git clone <url-du-depot>
-
-2. Installer les dépendances (si nécessaire) :
-
-	 pip install -r requirements.txt
-
-## Utilisation
-
-- Pour générer une liste par défaut :
-
-	python -m santa_list_generator.generate
-
-- Pour ajouter un cadeau à un destinataire :
-
-	python -m santa_list_generator.add --name "Alice" --gift "Livre"
-
-- Pour exporter la liste en CSV :
-
-	python -m santa_list_generator.export --format csv --output liste.csv
-
-Adapter les commandes selon l'implémentation réelle des modules.
-
-## Configuration
-
-Configurer via un fichier config.yml ou variables d'environnement selon le projet.
-
-## Tests
-
-Lancer la suite de tests :
-
-	pytest
-
-## Contribution
-
-Les contributions sont bienvenues : ouvrir une issue ou une pull request.
-
-## Licence
-
-Sous licence MIT — voir le fichier LICENSE pour plus de détails.
-
----
-
-Fichier généré automatiquement — court et factuel.
-
+```bash
+pip install -r requirements.txt
 ```
+
+## Lancement
+
+Le lancement direct sera prévu depuis :
+
+```bash
+python main.py
+```
+
+Pour l'instant, `main.py` est encore vide.
