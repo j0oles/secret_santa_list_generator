@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -216,3 +217,45 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+=======
+# Jupyter Notebooks
+compressor/jupyter_notebooks/
+.ipynb_checkpoints/
+.ipynb
+
+# data files — ignorer tout sauf .gitkeep (pour conserver les dossiers vides)
+compressor/data/*
+!compressor/data/.gitkeep
+!compressor/data/compressed/
+compressor/data/compressed/*
+!compressor/data/compressed/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# Environnements virtuels
+venv/
+.venv/
+env/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Variables d'environnement
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+>>>>>>> 0aac86f (init git)
